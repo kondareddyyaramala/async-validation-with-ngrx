@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { delay, map, filter } from 'rxjs/operators';
+import { delay, map, filter, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +9,25 @@ import { delay, map, filter } from 'rxjs/operators';
 export class ApplicationService {
   constructor(private http: HttpClient) { }
 
-  validatePostalCode(input: string): Observable<Object> {
-    return this.http
-      .get<Array<any>>('assets/postalCodes.json')
+  fakeResponse = [
+    {
+      "postalCode": "60058"
+    },
+    {
+      "postalCode": "60050"
+    },
+    {
+      "postalCode": "60057"
+    }
+  ];
+
+  validatePostalCode(input: string): Observable<boolean> {
+    return of(this.fakeResponse)
       .pipe(
         delay(1000),
-        map(postalCodes => postalCodes.filter(p => p.postalCode === input)),
+        map(postalCodes => postalCodes.filter(p => +p.postalCode === +input)),
+        tap(psCodes => console.log('In service ' + JSON.stringify(psCodes))),
+        tap(psCodes => console.log('In service ' + !!psCodes.length)),
         map(postalCodes => !!postalCodes.length),
       )
   }

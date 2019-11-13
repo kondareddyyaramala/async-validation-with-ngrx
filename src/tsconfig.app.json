@@ -1,0 +1,35 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "baseUrl": "./src",
+        "outDir": "./dist/out-tsc",
+        "sourceMap": true,
+        "declaration": false,
+        "module": "commonjs",
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "target": "es5",
+        "paths": {
+            "app/*": [
+                "app/*"
+            ],
+            "generated/*": [
+                "generated/*"
+            ],
+        },
+        "typeRoots": [
+            "node_modules/@types"
+        ],
+        "lib": [
+            "esnext",
+            "dom"
+        ],
+    },
+    "angularCompilerOptions": {
+        "fullTemplateTypeCheck": true,
+        "trace": true
+    }
+}

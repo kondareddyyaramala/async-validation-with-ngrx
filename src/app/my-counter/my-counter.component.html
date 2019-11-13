@@ -1,9 +1,8 @@
-
-<div>
-  <input>
-</div>
-
-<!-- 
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://github.com/ngrx/platform
--->
+<form [formGroup]="formGroup">
+  <div>
+    <label for="zipCode">Enter a zip code </label>
+    <input id="zipCode" formControlName="zipCode" [ngClass]="{'error': zipCode?.errors?.zipCodeIsNotValid }">
+  </div>
+  <br />
+  <div *ngIf="zipCode?.errors?.zipCodeIsNotValid"> Invalid zip code</div>
+</form>
