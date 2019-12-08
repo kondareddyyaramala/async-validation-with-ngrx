@@ -34,6 +34,7 @@ export class MyCounterComponent {
     }, { updateOn: 'blur' }); // This makes sure it only updates the formControl values on 'blur'
     // If you need the formControl to update its value on every change then simply removing this altogether works
     //  as the default value for this is `change`
+    // 'submit' also available
   }
 
 
