@@ -1,0 +1,9 @@
+<div class="postalcode">
+	<h1>PostalCode Component</h1>
+		<div>
+			<label for="formControl">Enter a zip code </label>
+			<input id="formControl" [formControl]="formControl" [ngClass]="{'error': formControl?.errors?.zipCodeIsNotValid }">
+  </div>
+			<br />
+			<div *ngIf="formControl?.errors?.zipCodeIsNotValid"> Invalid zip code</div>
+</div>

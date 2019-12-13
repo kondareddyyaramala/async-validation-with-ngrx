@@ -14,11 +14,11 @@ export class ApplicationEffects {
   ) { }
 
   validateZipCode$ = createEffect(() => this.actions$.pipe(
-    ofType(ApplicationActions.getZip),
+    ofType(ApplicationActions.getPostalCode),
     switchMap(action =>
       this.applicaitonService.validatePostalCode(action.zipCode)
         .pipe(
-          map(isValidZip => ApplicationActions.setIsValidZip({ isValidZip: isValidZip }))
+          map(postalCode => ApplicationActions.setPostalCode({ postalCode: postalCode || {} }))
         ))
   ));
 }

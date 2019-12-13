@@ -21,14 +21,14 @@ export class ApplicationService {
     }
   ];
 
-  validatePostalCode(input: string): Observable<boolean> {
+  validatePostalCode(input: string): Observable<Object> {
     return of(this.fakeResponse)
       .pipe(
         delay(1000),
         map(postalCodes => postalCodes.filter(p => +p.postalCode === +input)),
         tap(psCodes => console.log('In service ' + JSON.stringify(psCodes))),
         tap(psCodes => console.log('In service ' + !!psCodes.length)),
-        map(postalCodes => !!postalCodes.length),
+        map(postalCodes => postalCodes[0]),
       )
   }
 }

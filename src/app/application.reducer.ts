@@ -3,21 +3,18 @@ import * as ApplicaitonActions from './application.actions';
 
 
 export interface State {
-  isValidZip: boolean;
+  postalCode: Object;
 }
 
 export const initialState: State = {
-  isValidZip: false
+  postalCode: null
 };
 
 const _applicaitonReducer = createReducer(initialState,
-  on(ApplicaitonActions.setIsValidZip, (state, { isValidZip }) => ({ ...state, isValidZip }))
+  on(ApplicaitonActions.setPostalCode, (state, { postalCode }) => ({ ...state, postalCode }))
 );
 
 export function applicationReducer(state: State, action) {
   return _applicaitonReducer(state, action);
 }
-
-
-export const isZipCodeValid = (state: State) => state.isValidZip;
 

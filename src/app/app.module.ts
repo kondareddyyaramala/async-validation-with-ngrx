@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 import { StoreModule } from '@ngrx/store';
-import { MyCounterComponent } from './my-counter/my-counter.component';
+import { PostalCodeComponent } from './postalcode/postalcode.component';
 import { ROOT_REDUCERS, metaReducers } from './index.redcer';
 import { EffectsModule } from '@ngrx/effects';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -12,7 +12,7 @@ import { ApplicationEffects } from './application.effects';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent, MyCounterComponent],
+  declarations: [AppComponent, PostalCodeComponent],
   imports: [
     BrowserModule,
     FormsModule,

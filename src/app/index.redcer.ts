@@ -41,11 +41,11 @@ import {
   export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
     return (state, action) => {
       const result = reducer(state, action);
-      console.groupCollapsed(action.type);
-      console.log('prev state', state);
-      console.log('action', action);
-      console.log('next state', result);
-      console.groupEnd();
+      // console.groupCollapsed(action.type);
+      // console.log('prev state', state);
+      // console.log('action', action);
+      // console.log('next state', result);
+      // console.groupEnd();
   
       return result;
     };
@@ -63,7 +63,7 @@ import {
    */
   export const getApplicationState = (state: State) => state.application;
   
-  export const isZipCodeValid = createSelector(
+  export const getPostalCode: any = createSelector(
     getApplicationState,
-    fromApplication.isZipCodeValid
+    state => state.postalCode
   );
