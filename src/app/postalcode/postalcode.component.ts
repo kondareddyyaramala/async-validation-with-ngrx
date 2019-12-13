@@ -37,7 +37,9 @@ export class PostalCodeComponent {
       take(2) // this gets a little tricky here
       // There may be a better way to handle this
       // What this does is, it makes sure it only recieves two values
-      // The first one is the default value when we subscribe to this // obs first follwed by the second value when we update the value // in ngrx store. 
+      // The first one is the default value when we subscribe to this 
+      // obs first follwed by the second value when we update the value 
+      // in ngrx store. 
       // This also makes sure that the subscription gets completed
       // after recieving two values
     ).pipe(
