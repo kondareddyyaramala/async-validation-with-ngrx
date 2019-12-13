@@ -13,7 +13,7 @@ import * as fromReducers from '../index.redcer';
   styleUrls: ['./postalcode.component.scss'],
 })
 export class PostalCodeComponent {
-  @Input() formControl: FormControl;
+  @Input() control: FormControl;
 
   constructor(
     private store: Store<fromReducers.State>,
@@ -21,13 +21,18 @@ export class PostalCodeComponent {
   }
 
   ngOnInit() {
-    this.formControl.setValidators([Validators.required, Validators.minLength(5)])
-    this.formControl.setAsyncValidators(this.zipCodeValidator.bind(this));
+    this.control.setAsyncValidators(this.zipCodeValidator.bind(this));
   }
 
 
   zipCodeValidator(control: AbstractControl) {
+    // first resetting the value in store
+    this.store.dispatch(ApplicationActions.setPostalCode({ postalCode: null }));
+
+    //dispatching an action to search for the postal code
     this.store.dispatch(ApplicationActions.getPostalCode({ zipCode: control.value }));
+
+    // returning an observable that subscribe to store and updates the validity of the form control
     return this.store.select(fromReducers.getPostalCode).pipe(
       take(2) // this gets a little tricky here
       // There may be a better way to handle this
@@ -37,8 +42,8 @@ export class PostalCodeComponent {
       // after recieving two values
     ).pipe(
       map(v => { 
-        console.log(JSON.stringify('Resp ' + v));
-        return v && v.postalCode ? null : { 'zipCodeIsNotValid': true };
+        console.log(JSON.stringify(v));
+        return v && !!v.postalCode ? null : { 'zipCodeIsNotValid': true };
       })
     );
   }
