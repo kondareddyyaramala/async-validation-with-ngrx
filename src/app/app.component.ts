@@ -6,10 +6,10 @@ import { FormGroup, FormBuilder, FormControl, Validators, AbstractControl } from
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent { 
-    public formGroup: FormGroup;
+export class AppComponent {
+  public formGroup: FormGroup;
 
-    
+
   constructor(
     private fb: FormBuilder) {
   }
@@ -17,17 +17,17 @@ export class AppComponent {
   ngOnInit() {
     this.formGroup = this.fb.group({
       'zipCode': new FormControl('',
-      [Validators.required, Validators.minLength(5)]),
+        [Validators.required, Validators.minLength(5)]),
       'zipCodeTwo': new FormControl('',
-      [Validators.required, Validators.minLength(5)]),
+        [Validators.required, Validators.minLength(5)]),
     }, { updateOn: 'blur' }); // This makes sure it only updates the formControl values on 'blur'
     // If you need the formControl to update its value on every change then simply removing this altogether works
     //  as the default value for this is `change`
     // 'submit' also available
   }
 
-    get zipCode() {
-      return this.formGroup.get('zipCode');
+  get zipCode() {
+    return this.formGroup.get('zipCode');
   }
 
   get zipCodeTwo() {
