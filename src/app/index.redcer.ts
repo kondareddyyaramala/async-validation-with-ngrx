@@ -70,5 +70,7 @@ import {
 
   export const getDropdownStatus = createSelector(
     getApplicationState,
-    state => state.dropdownStatus
+    state => { 
+      return Math.random() >= 0.5  ? true : false;
+    }
   )

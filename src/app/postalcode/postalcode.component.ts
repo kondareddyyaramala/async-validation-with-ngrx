@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { FormGroup, FormBuilder, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { take, map, tap, shareReplay } from 'rxjs/operators';
-import * as ApplicationActions from '../application.actions';
+import { setDropdownStatus } from '../application.actions';
 import * as fromReducers from '../index.redcer';
 
 @Component({
@@ -51,10 +51,10 @@ export class PostalCodeComponent {
   }
 
   onFocusOut() {
-    this.store.dispatch(new ApplicationActions.setDropdownStatus({ dropdownStatus: false }));
+    this.store.dispatch(new setDropdownStatus({ dropdownStatus: false }));
   }
 
   onFocus() {
-    this.store.dispatch(new ApplicationActions.setDropdownStatus({ dropdownStatus: true }));
+    this.store.dispatch(new setDropdownStatus({ dropdownStatus: true }));
   }
 }

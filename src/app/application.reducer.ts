@@ -1,5 +1,5 @@
 import { createReducer, on, createSelector, State } from '@ngrx/store';
-import * as ApplicaitonActions from './application.actions';
+import { setDropdownStatus, setPostalCode, setRecord } from './application.actions';
 
 
 export interface State {
@@ -15,9 +15,9 @@ export const initialState: State = {
 };
 
 const _applicaitonReducer = createReducer(initialState,
-  on(ApplicaitonActions.setPostalCode, (state, { postalCode }) => ({ ...state, postalCode })),
-  on(ApplicaitonActions.setDropdownStatus, (state, { dropdownStatus }) => ({ ...state, dropdownStatus })),
-  on(ApplicaitonActions.setRecord, (state, { record }) => ({ ...state, record })),
+  on(setPostalCode, (state, { postalCode }) => ({ ...state, postalCode })),
+  on(setDropdownStatus, (state, { dropdownStatus }) => ({ ...state, dropdownStatus })),
+  on(setRecord, (state, { record }) => ({ ...state, record })),
 );
 
 export function applicationReducer(state: State, action) {
