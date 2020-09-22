@@ -67,3 +67,8 @@ import {
     getApplicationState,
     state => state.postalCode
   );
+
+  export const getDropdownStatus = createSelector(
+    getApplicationState,
+    state => state.dropdownStatus
+  )

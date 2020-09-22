@@ -1,9 +1,11 @@
 <div class="postalcode">
 	<h1>PostalCode Component</h1>
-		<div>
-			<label for="formControl">Enter a zip code </label>
-			<input id="formControl" [formControl]="control" [ngClass]="{'error': control?.errors?.zipCodeIsNotValid }">
-  </div>
-			<br />
-			<div *ngIf="control?.errors?.zipCodeIsNotValid"> Invalid zip code</div>
+	<div>
+		<label for="formControl">Enter a zip code </label>
+		<input id="formControl" [formControl]="control" [ngClass]="{'error': control?.errors?.zipCodeIsNotValid }" 
+		(focus)="onFocus($event)"
+		(focusout)="onFocusOut($event)">
+	</div>
+	<br />
+	<div *ngIf="control?.errors?.zipCodeIsNotValid"> Invalid zip code</div>
 </div>

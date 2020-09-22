@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, AbstractControl } from '@angular/forms';
+import * as fromReducers from '../index.redcer';
+import { Store } from '@ngrx/store';
+import * as ApplicationActions from './application.actions';
+
 
 @Component({
   selector: 'app-root',
@@ -11,7 +15,7 @@ export class AppComponent {
 
 
   constructor(
-    private fb: FormBuilder) {
+    private fb: FormBuilder,   private store: Store<fromReducers.State>,) {
   }
 
   ngOnInit() {
@@ -33,4 +37,10 @@ export class AppComponent {
   get zipCodeTwo() {
     return this.formGroup.get('zipCodeTwo');
   }
+
+  startPolling(){
+    this.store.dispatch(new ApplicationActions.startPolling());
+  }
+
+  
 }

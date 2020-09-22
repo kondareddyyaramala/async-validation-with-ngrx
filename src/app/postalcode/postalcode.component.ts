@@ -43,10 +43,18 @@ export class PostalCodeComponent {
       // This also makes sure that the subscription gets completed
       // after recieving two values
     ).pipe(
-      map(v => { 
+      map(v => {
         console.log(JSON.stringify(v));
         return v && !!v.postalCode ? null : { 'zipCodeIsNotValid': true };
       })
     );
+  }
+
+  onFocusOut() {
+    this.store.dispatch(new ApplicationActions.setDropdownStatus({ dropdownStatus: false }));
+  }
+
+  onFocus() {
+    this.store.dispatch(new ApplicationActions.setDropdownStatus({ dropdownStatus: true }));
   }
 }
